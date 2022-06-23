@@ -1,5 +1,15 @@
 import style from '../lista.module.scss'
-export default function Item(props: {nome: string, tempo: string}){
+
+export default function Item(
+    props: {
+      nome: string, 
+      tempo: string, 
+      selecionado:boolean,
+      completado: boolean,
+      id: string
+    }
+){
+
   const {nome, tempo } = props;
 
   return(
