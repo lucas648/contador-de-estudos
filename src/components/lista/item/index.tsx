@@ -1,5 +1,5 @@
 import { itemTarefa } from '../../../types/tarefa';
-import style from '../lista.module.scss'
+import style from './Item.module.scss'
 
 export default function Item({
       nome, 
@@ -15,9 +15,11 @@ export default function Item({
     <li 
       className={`
         ${style.item} 
-        ${selecionado ? style.itemSelecionado : ''}`
+        ${selecionado ? style.itemSelecionado : ''}
+        ${completado ? style.itemCompletado : ''}`
       } 
       onClick={()=>{
+        !completado && 
         selecionaTarefa({
           nome,
           tempo,
@@ -33,6 +35,7 @@ export default function Item({
       <span>
         {tempo}
       </span>
+      {completado && <span className={style.concluido} aria-label="tarefa completada"></span>}
     </li>
   )
 }
