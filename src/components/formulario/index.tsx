@@ -16,14 +16,22 @@ class Formulario extends React.Component<{
     evento.preventDefault();
     this.props.setTarefas(tarefas => [
       ...tarefas,
-      {...this.state, selecionado: false, completado: false, id: uuidV4()}
+      { 
+        ...this.state, 
+        selecionado: false, 
+        completado: false, 
+        id: uuidV4()
+      }
     ]);
     this.setState({nome:'', tempo: '00:00:00'})
   }
 
   render(){
     return(
-      <form className={style.novaTarefa} onSubmit={this.adicionarTarefa.bind(this)}>
+      <form 
+        className={style.novaTarefa} 
+        onSubmit={this.adicionarTarefa.bind(this)}
+      >
         <div className={style.inputContainer}>
           <label htmlFor="tarefa">
             Adicione um novo estudo!!
@@ -31,7 +39,10 @@ class Formulario extends React.Component<{
           <input
             value={this.state.nome}
             onChange={evento=>{
-              this.setState({...this.state, nome: evento.target.value})
+              this.setState({
+                ...this.state, 
+                nome: evento.target.value
+              })
             }}
             type="text"
             name="tarefa"
@@ -47,7 +58,10 @@ class Formulario extends React.Component<{
           <input
             value={this.state.tempo}
             onChange={evento=>{
-              this.setState({...this.state, tempo: evento.target.value})
+              this.setState({
+                ...this.state, 
+                tempo: evento.target.value
+              })
             }}
             type="time"
             step="1"

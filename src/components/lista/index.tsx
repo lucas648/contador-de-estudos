@@ -1,8 +1,10 @@
-import { Tarefa } from "../../types/tarefa";
+import { listaTarefas, Tarefa } from "../../types/tarefa";
 import Item from "./item";
 import style from './lista.module.scss';
 
-export default function  Lista({tarefas}:{tarefas: Tarefa[]}){
+export default function  Lista(
+  {tarefas, selecionaTarefa}: listaTarefas
+){
 
   return(
     <aside className={style.listaTarefas}>
@@ -10,7 +12,8 @@ export default function  Lista({tarefas}:{tarefas: Tarefa[]}){
       <ul>
         {tarefas.map((item,index)=>(
           <Item 
-            key={index}
+            selecionaTarefa={selecionaTarefa}
+            key={item.id}
             {...item}
           />
         ))}

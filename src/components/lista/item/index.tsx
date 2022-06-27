@@ -1,19 +1,32 @@
+import { itemTarefa } from '../../../types/tarefa';
 import style from '../lista.module.scss'
 
-export default function Item(
-    props: {
-      nome: string, 
-      tempo: string, 
-      selecionado:boolean,
-      completado: boolean,
-      id: string
-    }
+export default function Item({
+      nome, 
+      tempo, 
+      selecionado,
+      completado,
+      id,
+      selecionaTarefa
+    } : itemTarefa
 ){
 
-  const {nome, tempo } = props;
-
   return(
-    <li className={style.item}>
+    <li 
+      className={`
+        ${style.item} 
+        ${selecionado ? style.itemSelecionado : ''}`
+      } 
+      onClick={()=>{
+        selecionaTarefa({
+          nome,
+          tempo,
+          selecionado,
+          completado,
+          id
+        })
+      }}
+    >
       <h3>
         {nome}
       </h3>
